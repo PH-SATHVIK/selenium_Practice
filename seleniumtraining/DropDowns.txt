@@ -1,0 +1,67 @@
+package locators;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class DropDowns {
+	@Test
+	public void f() throws InterruptedException {
+
+		WebDriverManager.chromedriver();
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.get("https://www.leafground.com/select.xhtml;jsessionid=node019tsig4ss7flavp82b3rhzoy6217710.node0");
+
+		driver.manage().window().maximize();
+
+		Select drop = new Select(driver.findElement(By.xpath("//*[@id=\"j_idt87\"]/div/div[1]/div[1]/div/div/select")));
+
+		drop.selectByVisibleText("Selenium");
+		//selecting country//
+
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:country\"]/div[3]")).click();
+
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:country_3\"]")).click();
+
+		Thread.sleep(1000);
+		
+		//selecting city//
+
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:city\"]/div[3]")).click();
+
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:city_2\"]")).click();
+
+//selecting courses//
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:auto-complete\"]/button/span[1]")).click();
+		Thread.sleep(2000);
+
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:auto-complete_panel\"]/ul/li[2]")).click();
+
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:auto-complete\"]/button/span[1]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:auto-complete_panel\"]/ul/li[6]")).click();
+
+		// Choose language randomly//
+
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:lang\"]/div[3]")).click();
+		Thread.sleep(2000);
+
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:lang_1\"]")).click();
+		Thread.sleep(2000);
+
+		// Select 'Two' irrespective of the language chosen//
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:value\"]/div[3]")).click();
+
+		Thread.sleep(2000);
+
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:value_3\"]")).click();
+
+	}
+}

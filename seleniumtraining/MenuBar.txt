@@ -1,0 +1,62 @@
+package locators;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class MenuBar {
+	@Test
+	public void f() throws InterruptedException {
+		WebDriverManager.chromedriver();
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.navigate().to("https://www.leafground.com/menu.xhtml?i=0#");
+
+		driver.manage().window().maximize();
+
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:j_idt89\"]/ul/li[1]/a/span[3]")).click();
+		
+		Thread.sleep(1000);
+
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:j_idt89\"]/ul/li[1]/ul/li[1]/a")).click();
+		
+		Thread.sleep(1000);
+		
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:j_idt106\"]/ul/li[4]/a")).click();
+		
+		Thread.sleep(1000);
+		
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:j_idt116\"]/div[1]/h3")).click();
+		
+		Thread.sleep(1000);
+		
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:j_idt118\"]/a/span[1]")).click();
+		
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:j_idt134\"]/div/div[1]/ul/li[1]/a/span[1]")).click();
+		Thread.sleep(1000);
+		
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:j_idt134\"]/div/div[1]/ul/li[1]/ul/li[1]/a/span[1]")).click();
+		Thread.sleep(1000);
+		
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:j_idt134\"]/div/div[2]/span")).click();
+		Thread.sleep(1000);
+		
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:j_idt134\"]/div/div[2]/span")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:j_idt144_button\"]/span[1]")).click();
+		Thread.sleep(1000);
+		
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:j_idt144_menu\"]/ul/li[5]/a")).click();
+		Thread.sleep(2000);
+		driver.navigate().back();
+           
+                Actions act=new Actions(driver);
+		
+		act.contextClick().build().perform();
+
+	}
+}

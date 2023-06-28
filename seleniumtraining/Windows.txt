@@ -1,0 +1,47 @@
+package locators;
+
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Windows {
+	@Test
+	public void f() {
+		WebDriverManager.chromedriver();
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.navigate().to("https://demo.automationtesting.in/Windows.html");
+
+		driver.manage().window().maximize();
+
+		System.out.println(driver.getTitle());
+
+		driver.findElement(By.xpath("//*[@id=\"Tabbed\"]/a/button")).click();
+
+		Set<String> winHan = driver.getWindowHandles();
+
+		Iterator<String> iter = winHan.iterator();
+
+		String w1 = iter.next();
+
+		String w2 = iter.next();
+
+		System.out.println(w1);
+
+		System.out.println(w2);
+
+		driver.switchTo().window(w2);
+
+		System.out.println(driver.getTitle());
+
+		driver.switchTo().window(w1);
+
+	}
+}

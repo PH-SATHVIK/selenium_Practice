@@ -1,0 +1,101 @@
+package locators;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class webdriver /* extends Beforetest */ {
+	@Test
+	public void f() throws InterruptedException {
+
+		// System.setProperty("webdriver.chrome.driver", "C:\\Chrome
+		// Driver\\chromedriver.exe");
+
+		WebDriverManager.chromedriver();
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.navigate()
+				.to("https://www.leafground.com/input.xhtml;jsessionid=node016ctyac35ywsu1wt5ua0fbxmkv213959.node0");
+
+		driver.manage().window().maximize();
+
+		driver.findElement(By.id("j_idt88:name")).sendKeys("Pawar Hemanth Sathvik");
+
+		// driver.findElement(By.name("j_idt88:j_idt91")).clear();
+
+		driver.findElement(By.name("j_idt88:j_idt91")).sendKeys("India");
+
+		boolean val1 = driver.findElement(By.cssSelector("input[id=\"j_idt88:j_idt93\"]")).isEnabled();
+
+		if (val1 == false) {
+
+			System.out.println("text field is disabled");
+		}
+
+		driver.findElement(By.id("j_idt88:j_idt95")).clear();
+
+		String retreivedData = driver
+				.findElement(By.xpath("/html/body/div[1]/div[5]/div[2]/div/div[1]/div/form/div[5]/div/input"))
+				.getAttribute("value");
+		System.out.println(retreivedData);
+
+		driver.findElement(By.xpath("//*[@name='j_idt88:j_idt99']")).sendKeys("123456@gmail.com" + Keys.TAB);
+
+		driver.findElement(By.id("j_idt88:j_idt101")).sendKeys("learning selenium webdriver");
+
+		driver.findElement(By.xpath(
+				"/html/body/div[1]/div[5]/div[2]/div/div[1]/div/form/div[8]/div/div/div[1]/span[1]/span[1]/span[1]"))
+				.click();
+		Thread.sleep(1000);
+
+		driver.findElement(By.xpath("//*[@id=\"ql-picker-options-0\"]/span[3]")).click();
+
+		driver.findElement(By.xpath("//*[@id=\"j_idt88:j_idt103_toolbar\"]/span[1]/span[2]/span[1]")).click();
+		Thread.sleep(1000);
+
+		driver.findElement(By.xpath("//*[@id=\"ql-picker-options-1\"]/span[4]")).click();
+
+		driver.findElement(By.name("j_idt106:thisform:age")).sendKeys(Keys.ENTER);
+		Thread.sleep(1000);
+		String errmsg = driver.findElement(By.id("j_idt106:thisform:j_idt110_error-detail")).getText();
+
+		if (errmsg.equalsIgnoreCase("Age is mandatory")) {
+
+			System.out.println("Error message is confrimed");
+
+		}
+		Thread.sleep(2000);
+		Point location = driver.findElement(By.id("j_idt106:j_idt113")).getLocation();
+		int xvalue = location.getX();
+		System.out.println("xlocation " + xvalue);
+		int Yvalue = location.getY();
+
+		driver.findElement(By.id("j_idt106:float-input")).click();
+		// driver.findElement(By.id("j_idt106:j_idt113")).click();
+		Point location1 = driver.findElement(By.id("j_idt106:j_idt113")).getLocation();
+
+		int xvalue1 = location1.getX();
+		System.out.println("after xlocation " + xvalue1);
+		int Yvalue1 = location1.getY();
+
+		if (xvalue != xvalue1 && Yvalue != Yvalue1) {
+
+			System.out.println("position is changed");
+		}
+
+		driver.findElement(By.id("j_idt106:auto-complete_input")).sendKeys("sathvik");
+
+		driver.findElement(By.xpath("/html/body/span/ul/li[4]")).click();
+
+		driver.findElement(By.id("j_idt106:j_idt116_input")).sendKeys("25-09-1999");
+
+	}
+}

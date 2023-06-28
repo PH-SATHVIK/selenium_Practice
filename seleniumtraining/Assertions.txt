@@ -1,0 +1,14 @@
+@Test
+	public void checking_AssertNullMethod() {
+		String alpha = null;
+		String beta = "A";
+		int a = 10;
+		int[] err = { 2, 5, 8 };
+		assertNull(alpha); // this will success
+		assertNotNull("A", beta); // success
+		assertTrue(a == 10); // this will success
+		assertFalse(a > 10); // this will success
+		assertSame("A", alpha); // this will success
+		assertNotSame("10", beta); // this will success
+		assertArrayEquals(err, new int[] { 2, 5, 10 });// this will fail
+	}

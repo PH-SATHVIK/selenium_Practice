@@ -1,0 +1,59 @@
+package locators;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Hyperlinks {
+	@Test
+	public void f() {
+
+		WebDriverManager.chromedriver();
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.get("https://www.leafground.com/link.xhtml;jsessionid=node01b1t82vu2wgxwze6uxn0lee5w216674.node0");
+
+		driver.manage().window().maximize();
+
+		driver.findElement(By.linkText("Go to Dashboard")).click();
+
+		driver.navigate().back();
+
+		String DestinationURL = driver.findElement(By.linkText("Find the URL without clicking me."))
+				.getAttribute("href");
+
+		System.out.println(DestinationURL);
+
+		driver.findElement(By.linkText("Broken?")).click();
+
+		String ExpectedTitle = "Error 404 /lists.xhtml Not Found in ExternalContext as a Resource";
+
+		String ActualTile = driver.getTitle();
+
+		Assert.assertEquals(ActualTile, ExpectedTitle);
+
+		System.out.println("Yes the link is broken");
+
+		driver.navigate().back();
+
+		List<WebElement> links = driver.findElements(By.tagName("a"));
+
+		int noofLinks = links.size();
+
+		System.out.println(noofLinks);
+
+		List<WebElement> LayLinks = driver
+				.findElements(By.xpath("/html/body/div[1]/div[5]/div[2]/form/div/div/div/div/div/a"));
+
+		System.out.println(LayLinks.size());
+
+	}
+}

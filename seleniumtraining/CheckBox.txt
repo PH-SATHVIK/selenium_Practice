@@ -1,0 +1,50 @@
+package locators;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class CheckBoxes {
+	@Test
+	public void f() throws InterruptedException {
+		WebDriverManager.chromedriver();
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.navigate().to("https://www.leafground.com/checkbox.xhtml");
+
+		driver.manage().window().maximize();
+
+		driver.findElement(By.xpath("/html/body/div[1]/div[5]/div[2]/form/div/div[1]/div[2]/div/div/div/div[2]"))
+				.click();
+
+		List<WebElement> ele = driver.findElements(By
+				.xpath("/html/body/div[1]/div[5]/div[2]/form/div/div[1]/div[3]/div/div/table/tbody/tr/td/div/div[2]"));
+
+		for (WebElement click : ele) {
+			click.click();
+		}
+
+		boolean val = driver.findElement(By.id("j_idt87:j_idt102_input"))
+				.isEnabled();
+
+		if (val == false) {
+			System.out.println("Checkbox is disabled");
+		}
+		
+		driver.findElement(By.xpath("/html/body/div[1]/div[5]/div[2]/form/div/div[2]/div[3]/div/ul")).click();
+		
+		Thread.sleep(2000);
+		
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:multiple_panel\"]/div[2]/ul/li[5]/div/div[2]")).click();
+		
+		driver.findElement(By.xpath("//*[@id=\"j_idt87:multiple_panel\"]/div[2]/ul/li[1]/div/div[2]")).click();
+
+	}
+}

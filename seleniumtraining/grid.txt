@@ -1,0 +1,36 @@
+package locators;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Grid {
+	@Test
+	public void f() throws InterruptedException {
+
+		WebDriverManager.chromedriver();
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.navigate()
+				.to("https://www.leafground.com/grid.xhtml;jsessionid=node0fnr3zxcp25hlpt9q7xq9yhj8226298.node0");
+
+		driver.manage().window().maximize();
+
+		driver.findElement(By.id("form:dt-products:0:j_idt115")).click();
+		Thread.sleep(1000);
+
+		 Alert alert1 = driver.switchTo().alert();
+		 //driver.switchTo().alert().accept();
+
+		// alert1.accept();
+
+		driver.findElement(By.xpath("/html/body/div[1]/div[5]/div[2]/form/div/div/div/div[4]/div[3]/button[2]"))
+				.click();
+
+	}
+}

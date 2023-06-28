@@ -1,0 +1,78 @@
+package locators;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+@Test
+public class Buttons {
+	public void f() {
+
+		WebDriverManager.chromedriver();
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.navigate().to("https://www.leafground.com/button.xhtml");
+
+		driver.manage().window().maximize();
+
+		
+		  String st1 = driver.getTitle();
+		  
+		  driver.findElement(By.id("j_idt88:j_idt90")).click();
+		  
+		  String st2 = driver.getTitle();
+		  
+		  // Assert.assertEquals(st1, st2);
+		  
+		  driver.navigate().back();
+		  
+		  boolean b1 = driver.findElement(By.id("j_idt88:j_idt92")).isEnabled();
+		  
+		  if (b1 == false) {
+		  
+		  System.out.println("The button is diabled"); }
+		  
+		  Point location = driver.findElement(By.id("j_idt88:j_idt94")).getLocation();
+		  
+		  int Xvalue = location.getX(); int Yvalue = location.getY();
+		  
+		  System.out.println(Xvalue); System.out.println(Yvalue);
+		  
+		  String col=driver.findElement(By.id("j_idt88:j_idt96")).getCssValue("color");
+		  
+		System.out.println(col);
+		  
+		  Dimension dim=driver.findElement(By.id("j_idt88:j_idt96")).getSize();
+		  
+		  int Height=dim.height; int Width=dim.width;
+		  
+		  System.out.println(Height); System.out.println(Width);
+		  
+		  String  col1=driver.findElement(By.id("j_idt88:j_idt100")).getCssValue("color");
+		  
+		  System.out.println(col1);
+		  
+		  driver.findElement(By.id("j_idt88:j_idt100")).click();
+		  
+		  String col2=driver.findElement(By.id("j_idt88:j_idt100")).getCssValue("color");
+		 
+		  System.out.println(col2);
+		 
+
+		List<WebElement> ele = driver
+				.findElements(By.xpath("/html/body/div[1]/div[5]/div[2]/form/div/div[2]/div[4]/button"));
+
+		System.out.println(ele.size());
+
+	}
+}
